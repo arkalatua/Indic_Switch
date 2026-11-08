@@ -1,0 +1,33 @@
+{
+  "source": "LingoIITGN/COMI-LINGUA (LID)",
+  "licence": "CC-BY-4.0",
+  "skipped": {
+    "train": 0,
+    "test": 0
+  },
+  "removed_train_test_duplicates": 4156,
+  "sizes": {
+    "train": 23698,
+    "validation": 2633,
+    "test": 5000
+  },
+  "tag_distribution": {
+    "train": {
+      "EN": 102204,
+      "HI": 316295,
+      "OTH": 101500
+    },
+    "validation": {
+      "HI": 34613,
+      "EN": 11380,
+      "OTH": 11002
+    },
+    "test": {
+      "EN": 28299,
+      "OTH": 23202,
+      "HI": 70036
+    }
+  },
+  "max_rows": null,
+  "seed": 13
+}

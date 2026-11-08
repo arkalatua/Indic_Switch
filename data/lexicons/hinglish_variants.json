@@ -1,0 +1,142 @@
+{
+  "_about": "Seed lexicon: canonical Romanized-Hindi spelling -> observed variants. Applied ONLY to tokens the LID model tags HI above the confidence threshold. Variants that are also common English words (he, me, or, the, bi, to) are deliberately excluded. Extend from the validation split's error analysis, never from the test split.",
+  "nahi": [
+    "nahin",
+    "nhi",
+    "nahee",
+    "nahii"
+  ],
+  "kya": [
+    "kyaa",
+    "kia"
+  ],
+  "kyun": [
+    "kyon",
+    "kyu",
+    "kyoon",
+    "kiyu",
+    "kyoun"
+  ],
+  "kyunki": [
+    "kyonki",
+    "kyuki",
+    "kyuke",
+    "kyoki",
+    "kyunke"
+  ],
+  "accha": [
+    "acha",
+    "achha",
+    "achcha",
+    "acchha"
+  ],
+  "theek": [
+    "thik",
+    "thiik",
+    "theekh"
+  ],
+  "bahut": [
+    "bohot",
+    "bahot",
+    "bohat",
+    "bhot",
+    "bht",
+    "bhut"
+  ],
+  "haan": [
+    "haa",
+    "haaan"
+  ],
+  "kuch": [
+    "kuchh",
+    "kch",
+    "kuchch"
+  ],
+  "abhi": [
+    "abhee",
+    "abhii"
+  ],
+  "yaar": [
+    "yarr",
+    "yaarr"
+  ],
+  "matlab": [
+    "mtlb",
+    "matlb"
+  ],
+  "pata": [
+    "pta"
+  ],
+  "kaise": [
+    "kese",
+    "kaisey",
+    "kaisay"
+  ],
+  "aise": [
+    "aese",
+    "aisey",
+    "esey"
+  ],
+  "waise": [
+    "vaise",
+    "wese",
+    "vese",
+    "waisey"
+  ],
+  "woh": [
+    "voh",
+    "vo",
+    "wo"
+  ],
+  "yeh": [
+    "ye"
+  ],
+  "sirf": [
+    "srf"
+  ],
+  "chahiye": [
+    "chaiye",
+    "chahie",
+    "chaahiye"
+  ],
+  "lekin": [
+    "lekn",
+    "lkn"
+  ],
+  "bhi": [
+    "bhee",
+    "bhii"
+  ],
+  "raha": [
+    "rha"
+  ],
+  "rahi": [
+    "rhi"
+  ],
+  "rahe": [
+    "rhe"
+  ],
+  "mein": [
+    "mei",
+    "mien"
+  ],
+  "hain": [
+    "hein"
+  ],
+  "karna": [
+    "krna"
+  ],
+  "karo": [
+    "kro"
+  ],
+  "kar": [
+    "kr"
+  ],
+  "hoga": [
+    "hogaa"
+  ],
+  "samajh": [
+    "smjh",
+    "samjh"
+  ]
+}

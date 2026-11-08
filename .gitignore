@@ -1,0 +1,33 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Secrets: never commit credentials (HF tokens, API keys, Streamlit secrets)
+.env
+.env.*
+*.key
+*.pem
+*.p12
+.streamlit/secrets.toml
+.huggingface/
+hf_token*
+
+# Large artefacts stay out of Git
+models/*
+!models/lid_model/
+models/lid_model/*
+!models/lid_model/.gitkeep
+data/audio/
+data/raw/
+data/processed/*.jsonl
+data/samples/*
+!data/samples/.gitkeep
+experiments/asr*/*.jsonl
+*.pkl
+*.pkl.sha256
+*.safetensors
+*.bin
+experiments/ablations.json

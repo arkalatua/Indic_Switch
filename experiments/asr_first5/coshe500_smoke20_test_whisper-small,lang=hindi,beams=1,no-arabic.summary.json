@@ -1,0 +1,67 @@
+{
+  "config": {
+    "model_name": "openai/whisper-small",
+    "language": "hindi",
+    "task": "transcribe",
+    "num_beams": 1,
+    "prompt": null,
+    "use_vad": false,
+    "vad_max_chunk_s": 25.0,
+    "vad_pad_s": 0.25,
+    "chunk_length_s": 30.0,
+    "batch_size": 8,
+    "fp16": true,
+    "suppress_scripts": [
+      "arabic"
+    ],
+    "fallback": false
+  },
+  "tag": "whisper-small,lang=hindi,beams=1,no-arabic",
+  "manifest": "../data/manifests/coshe500_smoke20.csv",
+  "split": "test",
+  "n": 5,
+  "audio_seconds": 118.84,
+  "processing_seconds": 372.63734110002406,
+  "rtf_excl_model_load": 3.1356221903401553,
+  "scores": {
+    "wer": 1.353211009174312,
+    "cer": 0.9660678642714571,
+    "word_counts": {
+      "hits": 12,
+      "substitutions": 382,
+      "deletions": 42,
+      "insertions": 166,
+      "ref_len": 436
+    },
+    "char_counts": {
+      "hits": 203,
+      "substitutions": 1118,
+      "deletions": 182,
+      "insertions": 152,
+      "ref_len": 1503
+    },
+    "n_utts": 5
+  },
+  "scores_script_agnostic": {
+    "wer": 1.3394495412844036,
+    "cer": 0.817351598173516,
+    "word_counts": {
+      "hits": 18,
+      "substitutions": 376,
+      "deletions": 42,
+      "insertions": 166,
+      "ref_len": 436
+    },
+    "char_counts": {
+      "hits": 505,
+      "substitutions": 1045,
+      "deletions": 202,
+      "insertions": 185,
+      "ref_len": 1752
+    },
+    "n_utts": 5
+  },
+  "device": "cpu",
+  "peak_gpu_mem_gb": null,
+  "rss_gb": 1.371
+}

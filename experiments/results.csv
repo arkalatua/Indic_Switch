@@ -1,0 +1,15 @@
+asr,system,lid,wer,cer,wer_script_agnostic,cer_script_agnostic,edits,improved,degraded,post_ms_per_utt
+"coshe500_smoke20_test_whisper-base,lang=auto,beams=1",raw,-,1.1037621359223302,1.0669765840220387,1.0964805825242718,1.0280649926144756,0,0,0,0.0
+"coshe500_smoke20_test_whisper-base,lang=auto,beams=1",char_ngram_lr+full,../models/ngram_lid.pkl,0.9981796116504854,0.9831267217630854,0.9908980582524272,0.9880354505169867,940,3,0,5.975
+"coshe500_smoke20_test_whisper-base,lang=auto,beams=1",char_ngram_lr+-canonicalize,../models/ngram_lid.pkl,0.9981796116504854,0.9831267217630854,0.9908980582524272,0.9880354505169867,940,3,0,4.268
+"coshe500_smoke20_test_whisper-base,lang=auto,beams=1",char_ngram_lr+-loop_collapse,../models/ngram_lid.pkl,1.1037621359223302,1.0669765840220387,1.0964805825242718,1.0280649926144756,0,0,0,4.341
+"coshe500_smoke20_test_whisper-base,lang=auto,beams=1",char_ngram_lr+script=roman,../models/ngram_lid.pkl,1.0012135922330097,1.0389118457300275,0.9921116504854369,0.9884785819793205,978,3,1,6.873
+"coshe500_smoke20_test_whisper-base,lang=auto,beams=1",char_ngram_lr+script=native,../models/ngram_lid.pkl,0.9981796116504854,0.9831267217630854,0.9908980582524272,0.9880354505169867,940,3,0,6.597
+"coshe500_smoke20_test_whisper-base,lang=auto,beams=1",char_ngram_lr+script=mixed,../models/ngram_lid.pkl,0.9981796116504854,0.9831267217630854,0.9908980582524272,0.9880354505169867,940,3,0,3.414
+"coshe500_smoke20_test_whisper-base,lang=hindi,beams=3",raw,-,1.5157766990291262,1.2827134986225894,1.5115291262135921,1.1447562776957163,0,0,0,0.0
+"coshe500_smoke20_test_whisper-base,lang=hindi,beams=3",char_ngram_lr+full,../models/ngram_lid.pkl,0.9860436893203883,0.9504132231404959,0.9817961165048543,0.9153618906942393,1374,7,0,10.016
+"coshe500_smoke20_test_whisper-base,lang=hindi,beams=3",char_ngram_lr+-canonicalize,../models/ngram_lid.pkl,0.9860436893203883,0.9504132231404959,0.9817961165048543,0.9155096011816839,1373,7,0,5.079
+"coshe500_smoke20_test_whisper-base,lang=hindi,beams=3",char_ngram_lr+-loop_collapse,../models/ngram_lid.pkl,1.5157766990291262,1.2827134986225894,1.5115291262135921,1.1446085672082718,1,0,0,6.494
+"coshe500_smoke20_test_whisper-base,lang=hindi,beams=3",char_ngram_lr+script=roman,../models/ngram_lid.pkl,0.9933252427184466,0.9574724517906336,0.9848300970873787,0.916248153618907,1428,7,1,8.874
+"coshe500_smoke20_test_whisper-base,lang=hindi,beams=3",char_ngram_lr+script=native,../models/ngram_lid.pkl,0.9860436893203883,0.9504132231404959,0.9817961165048543,0.9153618906942393,1374,7,0,7.634
+"coshe500_smoke20_test_whisper-base,lang=hindi,beams=3",char_ngram_lr+script=mixed,../models/ngram_lid.pkl,0.9860436893203883,0.9504132231404959,0.9817961165048543,0.9153618906942393,1374,7,0,6.719

@@ -1,0 +1,767 @@
+{
+  "model": "script_rule",
+  "model_path": "rule",
+  "split": "test",
+  "n_sentences": 5000,
+  "n_tokens": 121537,
+  "lid": {
+    "accuracy": 0.8392588265301925,
+    "macro_f1": 0.8363325204791061,
+    "macro_f1_labels": [
+      "HI",
+      "EN",
+      "OTH"
+    ],
+    "per_class": {
+      "HI": {
+        "precision": 0.903876347118272,
+        "recall": 0.8466645725055686,
+        "f1": 0.874335552459101,
+        "support": 70036
+      },
+      "EN": {
+        "precision": 0.6269484285269739,
+        "recall": 0.7831372133290929,
+        "f1": 0.6963926596279537,
+        "support": 28299
+      },
+      "OTH": {
+        "precision": 0.9979111003157639,
+        "recall": 0.8853547108007931,
+        "f1": 0.9382693493502637,
+        "support": 23202
+      }
+    },
+    "labels": [
+      "HI",
+      "EN",
+      "OTH"
+    ],
+    "confusion_matrix": [
+      [
+        59297,
+        10734,
+        5
+      ],
+      [
+        6099,
+        22162,
+        38
+      ],
+      [
+        207,
+        2453,
+        20542
+      ]
+    ]
+  },
+  "boundary": {
+    "precision": 0.9219742333514789,
+    "recall": 0.5944775944775945,
+    "f1": 0.7228624270877794,
+    "tp": 15243,
+    "fp": 1290,
+    "fn": 10398
+  },
+  "efficiency": {
+    "seconds": 0.6089305000205059,
+    "tokens_per_second": 199590.92211000633,
+    "device": "cpu",
+    "peak_gpu_mem_gb": null,
+    "rss_gb": null
+  },
+  "top_confusions": [
+    {
+      "word": "hai",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 523
+    },
+    {
+      "word": "ki",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 270
+    },
+    {
+      "word": "ke",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 254
+    },
+    {
+      "word": "ko",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 191
+    },
+    {
+      "word": "se",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 188
+    },
+    {
+      "word": "ka",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 169
+    },
+    {
+      "word": "nahi",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 168
+    },
+    {
+      "word": "bhi",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 166
+    },
+    {
+      "word": "aur",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 146
+    },
+    {
+      "word": "ho",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 131
+    },
+    {
+      "word": "gst",
+      "gold": "OTH",
+      "pred": "EN",
+      "count": 104
+    },
+    {
+      "word": "me",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 98
+    },
+    {
+      "word": "kya",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 93
+    },
+    {
+      "word": "स्टेशन",
+      "gold": "EN",
+      "pred": "HI",
+      "count": 90
+    },
+    {
+      "word": "kar",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 90
+    },
+    {
+      "word": "hain",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 87
+    },
+    {
+      "word": "hi",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 86
+    },
+    {
+      "word": "to",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 83
+    },
+    {
+      "word": "ye",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 77
+    },
+    {
+      "word": "ne",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 76
+    },
+    {
+      "word": "ऑफ",
+      "gold": "EN",
+      "pred": "HI",
+      "count": 73
+    },
+    {
+      "word": "ek",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 73
+    },
+    {
+      "word": "com",
+      "gold": "OTH",
+      "pred": "EN",
+      "count": 72
+    },
+    {
+      "word": "tha",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 72
+    },
+    {
+      "word": "k",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 71
+    },
+    {
+      "word": "mein",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 68
+    },
+    {
+      "word": "aap",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 67
+    },
+    {
+      "word": "par",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 64
+    },
+    {
+      "word": "ab",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 64
+    },
+    {
+      "word": "pe",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 62
+    },
+    {
+      "word": "kuch",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 61
+    },
+    {
+      "word": "इंडिया",
+      "gold": "EN",
+      "pred": "HI",
+      "count": 61
+    },
+    {
+      "word": "toh",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 60
+    },
+    {
+      "word": "ji",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 60
+    },
+    {
+      "word": "लॉन्च",
+      "gold": "EN",
+      "pred": "HI",
+      "count": 59
+    },
+    {
+      "word": "na",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 56
+    },
+    {
+      "word": "रेलवे",
+      "gold": "EN",
+      "pred": "HI",
+      "count": 54
+    },
+    {
+      "word": "aaj",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 53
+    },
+    {
+      "word": "jo",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 53
+    },
+    {
+      "word": "liye",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 50
+    }
+  ],
+  "error_examples": [
+    {
+      "word": "ट्रेन",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.9,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "यह ट्रेन शिमोगा टाउन रेलवे स्टेशन"
+    },
+    {
+      "word": "टाउन",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.9,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "यह ट्रेन शिमोगा टाउन रेलवे स्टेशन ( स्टेशन"
+    },
+    {
+      "word": "रेलवे",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.9,
+      "near_boundary": false,
+      "capitalized": false,
+      "context": "यह ट्रेन शिमोगा टाउन रेलवे स्टेशन ( स्टेशन कोड"
+    },
+    {
+      "word": "स्टेशन",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.9,
+      "near_boundary": false,
+      "capitalized": false,
+      "context": "ट्रेन शिमोगा टाउन रेलवे स्टेशन ( स्टेशन कोड :"
+    },
+    {
+      "word": "स्टेशन",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.9,
+      "near_boundary": false,
+      "capitalized": false,
+      "context": "टाउन रेलवे स्टेशन ( स्टेशन कोड : SMET )"
+    },
+    {
+      "word": "कोड",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.9,
+      "near_boundary": false,
+      "capitalized": false,
+      "context": "रेलवे स्टेशन ( स्टेशन कोड : SMET ) से"
+    },
+    {
+      "word": "00PM",
+      "gold": "OTH",
+      "pred": "EN",
+      "conf": 0.5,
+      "near_boundary": false,
+      "capitalized": false,
+      "context": ") से 10 : 00PM बजे छूटती है और"
+    },
+    {
+      "word": "सिटी",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.9,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "छूटती है और बंगलौर सिटी जंक्शन रेलवे स्टेशन ("
+    },
+    {
+      "word": "जंक्शन",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.9,
+      "near_boundary": false,
+      "capitalized": false,
+      "context": "है और बंगलौर सिटी जंक्शन रेलवे स्टेशन ( स्टेशन"
+    },
+    {
+      "word": "रेलवे",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.9,
+      "near_boundary": false,
+      "capitalized": false,
+      "context": "और बंगलौर सिटी जंक्शन रेलवे स्टेशन ( स्टेशन कोड"
+    },
+    {
+      "word": "स्टेशन",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.9,
+      "near_boundary": false,
+      "capitalized": false,
+      "context": "बंगलौर सिटी जंक्शन रेलवे स्टेशन ( स्टेशन कोड :"
+    },
+    {
+      "word": "स्टेशन",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.9,
+      "near_boundary": false,
+      "capitalized": false,
+      "context": "जंक्शन रेलवे स्टेशन ( स्टेशन कोड : SBC )"
+    },
+    {
+      "word": "कोड",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.9,
+      "near_boundary": false,
+      "capitalized": false,
+      "context": "रेलवे स्टेशन ( स्टेशन कोड : SBC ) पर"
+    },
+    {
+      "word": "30AM",
+      "gold": "OTH",
+      "pred": "EN",
+      "conf": 0.5,
+      "near_boundary": false,
+      "capitalized": false,
+      "context": ") पर 04 : 30AM बजे पहुंचती है ।"
+    },
+    {
+      "word": "आईएफएस",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.9,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "दो ( IFS ) आईएफएस व एक ( IPS"
+    },
+    {
+      "word": "आईपीएल",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.9,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": ") ने पांच बार आईपीएल की ट्रॉफी अपने नाम"
+    },
+    {
+      "word": "ट्रॉफी",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.9,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "पांच बार आईपीएल की ट्रॉफी अपने नाम की है"
+    },
+    {
+      "word": "प्राइम",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.9,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "अमेज़ॅन प्राइम वीडियो ( Amazon Prime"
+    },
+    {
+      "word": "सीन",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.9,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "से एक ओर अनदेखा सीन शेयर किया है ।"
+    },
+    {
+      "word": "शेयर",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.9,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "एक ओर अनदेखा सीन शेयर किया है ।"
+    },
+    {
+      "word": "जूनियर",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.9,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "( ICMR ) ने जूनियर रिसर्च फेलो ( JRF"
+    },
+    {
+      "word": "रिसर्च",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.9,
+      "near_boundary": false,
+      "capitalized": false,
+      "context": "ICMR ) ने जूनियर रिसर्च फेलो ( JRF )"
+    },
+    {
+      "word": "फेलो",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.9,
+      "near_boundary": false,
+      "capitalized": false,
+      "context": ") ने जूनियर रिसर्च फेलो ( JRF ) पदों"
+    },
+    {
+      "word": "ट्रक",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.9,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "मजदूरी कर लेंगे , ट्रक नहीं चलाएंगे"
+    },
+    {
+      "word": "डिजिटल",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.9,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "फ्लिपकार्ट के अलावा रिलायंस डिजिटल , क्रोमा , पूर्विका"
+    },
+    {
+      "word": "मोबाइल्स",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.9,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": ", पूर्विका , संगीता मोबाइल्स , विजय सेल्स और"
+    },
+    {
+      "word": "ऑफलाइन",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.9,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "विजय सेल्स और अन्य ऑफलाइन रिटेल स्टोर में भी"
+    },
+    {
+      "word": "रिटेल",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.9,
+      "near_boundary": false,
+      "capitalized": false,
+      "context": "सेल्स और अन्य ऑफलाइन रिटेल स्टोर में भी मिलेगा"
+    },
+    {
+      "word": "स्टोर",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.9,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "और अन्य ऑफलाइन रिटेल स्टोर में भी मिलेगा ।"
+    },
+    {
+      "word": "यूनिट",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.9,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "के बक्से बनाने की यूनिट शुरू की ।"
+    },
+    {
+      "word": "एक्स्प्रेशन",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.9,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "करने के लिए एक एक्स्प्रेशन लिखें |"
+    },
+    {
+      "word": "पेज",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.9,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "इस tutorial पेज पर आपको code files"
+    },
+    {
+      "word": "डाउनलोड",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.9,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "गई हैं कृपया files डाउनलोड और एक्स्ट्रैक्ट करें |"
+    },
+    {
+      "word": "एक्स्ट्रैक्ट",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.9,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "कृपया files डाउनलोड और एक्स्ट्रैक्ट करें |"
+    },
+    {
+      "word": "21IPL",
+      "gold": "OTH",
+      "pred": "EN",
+      "conf": 0.5,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "मालूम हो कि उन्होंने 21IPL 2021 , SRH vs"
+    },
+    {
+      "word": "आईपीएल",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.9,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "मुंबई इंडियंस की टीम आईपीएल 2021 के 55वें ​"
+    },
+    {
+      "word": "55वें",
+      "gold": "OTH",
+      "pred": "HI",
+      "conf": 0.9,
+      "near_boundary": false,
+      "capitalized": false,
+      "context": "टीम आईपीएल 2021 के 55वें ​ ​ मैच में"
+    },
+    {
+      "word": "JIO",
+      "gold": "HI",
+      "pred": "EN",
+      "conf": 0.5,
+      "near_boundary": true,
+      "capitalized": true,
+      "context": "JIO me 509 ka Recharge"
+    },
+    {
+      "word": "ka",
+      "gold": "HI",
+      "pred": "EN",
+      "conf": 0.5,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "JIO me 509 ka Recharge karwaya . ."
+    },
+    {
+      "word": "karwaya",
+      "gold": "HI",
+      "pred": "EN",
+      "conf": 0.5,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "me 509 ka Recharge karwaya . . aur GAdhe"
+    },
+    {
+      "word": "aur",
+      "gold": "HI",
+      "pred": "EN",
+      "conf": 0.5,
+      "near_boundary": false,
+      "capitalized": false,
+      "context": "Recharge karwaya . . aur GAdhe abhi bhi mujhe"
+    },
+    {
+      "word": "GAdhe",
+      "gold": "HI",
+      "pred": "EN",
+      "conf": 0.5,
+      "near_boundary": false,
+      "capitalized": true,
+      "context": "karwaya . . aur GAdhe abhi bhi mujhe 309"
+    },
+    {
+      "word": "abhi",
+      "gold": "HI",
+      "pred": "EN",
+      "conf": 0.5,
+      "near_boundary": false,
+      "capitalized": false,
+      "context": ". . aur GAdhe abhi bhi mujhe 309 me"
+    },
+    {
+      "word": "bhi",
+      "gold": "HI",
+      "pred": "EN",
+      "conf": 0.5,
+      "near_boundary": false,
+      "capitalized": false,
+      "context": ". aur GAdhe abhi bhi mujhe 309 me latka"
+    },
+    {
+      "word": "mujhe",
+      "gold": "HI",
+      "pred": "EN",
+      "conf": 0.5,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "aur GAdhe abhi bhi mujhe 309 me latka ke"
+    },
+    {
+      "word": "latka",
+      "gold": "HI",
+      "pred": "EN",
+      "conf": 0.5,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "bhi mujhe 309 me latka ke bethe he ."
+    },
+    {
+      "word": "ke",
+      "gold": "HI",
+      "pred": "EN",
+      "conf": 0.5,
+      "near_boundary": false,
+      "capitalized": false,
+      "context": "mujhe 309 me latka ke bethe he . ."
+    },
+    {
+      "word": "bethe",
+      "gold": "HI",
+      "pred": "EN",
+      "conf": 0.5,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "309 me latka ke bethe he . . ."
+    },
+    {
+      "word": "Dekhte",
+      "gold": "HI",
+      "pred": "EN",
+      "conf": 0.5,
+      "near_boundary": true,
+      "capitalized": true,
+      "context": "he . . . Dekhte he appellate Officer kya"
+    },
+    {
+      "word": "kya",
+      "gold": "HI",
+      "pred": "EN",
+      "conf": 0.5,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "Dekhte he appellate Officer kya bolta he . ."
+    }
+  ]
+}

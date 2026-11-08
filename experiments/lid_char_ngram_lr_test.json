@@ -1,0 +1,767 @@
+{
+  "model": "char_ngram_lr",
+  "model_path": "../models/ngram_lid.pkl",
+  "split": "test",
+  "n_sentences": 5000,
+  "n_tokens": 121537,
+  "lid": {
+    "accuracy": 0.9713832001777236,
+    "macro_f1": 0.9687240511429985,
+    "macro_f1_labels": [
+      "HI",
+      "EN",
+      "OTH"
+    ],
+    "per_class": {
+      "HI": {
+        "precision": 0.9758473312791969,
+        "recall": 0.9812953338283169,
+        "f1": 0.9785637498843112,
+        "support": 70036
+      },
+      "EN": {
+        "precision": 0.9422519272933022,
+        "recall": 0.941552705042581,
+        "f1": 0.9419021864008342,
+        "support": 28299
+      },
+      "OTH": {
+        "precision": 0.9936930623686054,
+        "recall": 0.9778467373502284,
+        "f1": 0.9857062171438502,
+        "support": 23202
+      }
+    },
+    "labels": [
+      "HI",
+      "EN",
+      "OTH"
+    ],
+    "confusion_matrix": [
+      [
+        68726,
+        1283,
+        27
+      ],
+      [
+        1537,
+        26645,
+        117
+      ],
+      [
+        164,
+        350,
+        22688
+      ]
+    ]
+  },
+  "boundary": {
+    "precision": 0.8950079539428831,
+    "recall": 0.9215709215709216,
+    "f1": 0.9080952289452952,
+    "tp": 23630,
+    "fp": 2772,
+    "fn": 2011
+  },
+  "efficiency": {
+    "seconds": 6.824402199999895,
+    "tokens_per_second": 17809.17894903701,
+    "device": "cpu",
+    "peak_gpu_mem_gb": null,
+    "rss_gb": null
+  },
+  "top_confusions": [
+    {
+      "word": "me",
+      "gold": "EN",
+      "pred": "HI",
+      "count": 41
+    },
+    {
+      "word": "to",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 36
+    },
+    {
+      "word": "to",
+      "gold": "EN",
+      "pred": "HI",
+      "count": 35
+    },
+    {
+      "word": "me",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 30
+    },
+    {
+      "word": "इंडिया",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 26
+    },
+    {
+      "word": "वीडियो",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 20
+    },
+    {
+      "word": "the",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 17
+    },
+    {
+      "word": "hi",
+      "gold": "EN",
+      "pred": "HI",
+      "count": 17
+    },
+    {
+      "word": "u",
+      "gold": "OTH",
+      "pred": "EN",
+      "count": 14
+    },
+    {
+      "word": "rt",
+      "gold": "OTH",
+      "pred": "EN",
+      "count": 13
+    },
+    {
+      "word": "टीम",
+      "gold": "EN",
+      "pred": "HI",
+      "count": 13
+    },
+    {
+      "word": "आईपीएल",
+      "gold": "EN",
+      "pred": "HI",
+      "count": 12
+    },
+    {
+      "word": "कंपनी",
+      "gold": "EN",
+      "pred": "HI",
+      "count": 12
+    },
+    {
+      "word": "aap",
+      "gold": "EN",
+      "pred": "HI",
+      "count": 12
+    },
+    {
+      "word": "d",
+      "gold": "EN",
+      "pred": "OTH",
+      "count": 12
+    },
+    {
+      "word": "he",
+      "gold": "EN",
+      "pred": "HI",
+      "count": 11
+    },
+    {
+      "word": "log",
+      "gold": "EN",
+      "pred": "HI",
+      "count": 11
+    },
+    {
+      "word": "ki",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 11
+    },
+    {
+      "word": "i",
+      "gold": "OTH",
+      "pred": "EN",
+      "count": 10
+    },
+    {
+      "word": "स्टेडियम",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 10
+    },
+    {
+      "word": "इंजन",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 10
+    },
+    {
+      "word": "is",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 10
+    },
+    {
+      "word": "इन",
+      "gold": "EN",
+      "pred": "HI",
+      "count": 10
+    },
+    {
+      "word": "use",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 9
+    },
+    {
+      "word": "कार",
+      "gold": "EN",
+      "pred": "HI",
+      "count": 9
+    },
+    {
+      "word": "टीवी",
+      "gold": "EN",
+      "pred": "HI",
+      "count": 9
+    },
+    {
+      "word": "पीएम",
+      "gold": "EN",
+      "pred": "HI",
+      "count": 9
+    },
+    {
+      "word": "रेलवे",
+      "gold": "EN",
+      "pred": "HI",
+      "count": 8
+    },
+    {
+      "word": "डिग्री",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 8
+    },
+    {
+      "word": "स्कूल",
+      "gold": "EN",
+      "pred": "HI",
+      "count": 8
+    },
+    {
+      "word": "do",
+      "gold": "EN",
+      "pred": "HI",
+      "count": 8
+    },
+    {
+      "word": "मैच",
+      "gold": "EN",
+      "pred": "HI",
+      "count": 8
+    },
+    {
+      "word": "or",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 8
+    },
+    {
+      "word": "बैंक",
+      "gold": "EN",
+      "pred": "HI",
+      "count": 8
+    },
+    {
+      "word": "पार्टी",
+      "gold": "EN",
+      "pred": "HI",
+      "count": 8
+    },
+    {
+      "word": "delhi",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 7
+    },
+    {
+      "word": "टी20",
+      "gold": "OTH",
+      "pred": "EN",
+      "count": 7
+    },
+    {
+      "word": "वैक्सीन",
+      "gold": "HI",
+      "pred": "EN",
+      "count": 7
+    },
+    {
+      "word": "केस",
+      "gold": "EN",
+      "pred": "HI",
+      "count": 7
+    },
+    {
+      "word": "इंडिया",
+      "gold": "EN",
+      "pred": "HI",
+      "count": 7
+    }
+  ],
+  "error_examples": [
+    {
+      "word": "सिटी",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.536,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "छूटती है और बंगलौर सिटी जंक्शन रेलवे स्टेशन ("
+    },
+    {
+      "word": "आईएफएस",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.59,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "दो ( IFS ) आईएफएस व एक ( IPS"
+    },
+    {
+      "word": "आईपीएल",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.637,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": ") ने पांच बार आईपीएल की ट्रॉफी अपने नाम"
+    },
+    {
+      "word": "ट्रॉफी",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.604,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "पांच बार आईपीएल की ट्रॉफी अपने नाम की है"
+    },
+    {
+      "word": "प्राइम",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.531,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "अमेज़ॅन प्राइम वीडियो ( Amazon Prime"
+    },
+    {
+      "word": "सीन",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.693,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "से एक ओर अनदेखा सीन शेयर किया है ।"
+    },
+    {
+      "word": "ट्रक",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.916,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "मजदूरी कर लेंगे , ट्रक नहीं चलाएंगे"
+    },
+    {
+      "word": "मोबाइल्स",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.555,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": ", पूर्विका , संगीता मोबाइल्स , विजय सेल्स और"
+    },
+    {
+      "word": "सेल्स",
+      "gold": "HI",
+      "pred": "EN",
+      "conf": 0.945,
+      "near_boundary": false,
+      "capitalized": false,
+      "context": "संगीता मोबाइल्स , विजय सेल्स और अन्य ऑफलाइन रिटेल"
+    },
+    {
+      "word": "21IPL",
+      "gold": "OTH",
+      "pred": "EN",
+      "conf": 0.726,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "मालूम हो कि उन्होंने 21IPL 2021 , SRH vs"
+    },
+    {
+      "word": "आईपीएल",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.669,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "मुंबई इंडियंस की टीम आईपीएल 2021 के 55वें ​"
+    },
+    {
+      "word": "me",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.546,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "abhi bhi mujhe 309 me latka ke bethe he"
+    },
+    {
+      "word": "Burnol",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.868,
+      "near_boundary": true,
+      "capitalized": true,
+      "context": "@ narendramodi sir please Burnol ko bhi free mein"
+    },
+    {
+      "word": "_IMPACT",
+      "gold": "OTH",
+      "pred": "EN",
+      "conf": 0.845,
+      "near_boundary": false,
+      "capitalized": false,
+      "context": "waali hai # GST _IMPACT"
+    },
+    {
+      "word": "H",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.904,
+      "near_boundary": false,
+      "capitalized": true,
+      "context": "Steve H . McFly ने अपने"
+    },
+    {
+      "word": "इंडिया",
+      "gold": "HI",
+      "pred": "EN",
+      "conf": 0.501,
+      "near_boundary": false,
+      "capitalized": false,
+      "context": "इंडिया मोबाइल कांग्रेस ( IMC"
+    },
+    {
+      "word": "मोबाइल",
+      "gold": "HI",
+      "pred": "EN",
+      "conf": 0.678,
+      "near_boundary": false,
+      "capitalized": false,
+      "context": "इंडिया मोबाइल कांग्रेस ( IMC 2020"
+    },
+    {
+      "word": "मेट्रो",
+      "gold": "HI",
+      "pred": "EN",
+      "conf": 0.907,
+      "near_boundary": false,
+      "capitalized": false,
+      "context": "मेट्रो स्टेशन ( Metro Station"
+    },
+    {
+      "word": "स्टेशन",
+      "gold": "HI",
+      "pred": "EN",
+      "conf": 0.736,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "मेट्रो स्टेशन ( Metro Station )"
+    },
+    {
+      "word": "सीआईएसएफ",
+      "gold": "HI",
+      "pred": "EN",
+      "conf": 0.674,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "हमारी सुरक्षा में तैनात सीआईएसएफ ( CISF ) के"
+    },
+    {
+      "word": "इंडियन",
+      "gold": "HI",
+      "pred": "EN",
+      "conf": 0.752,
+      "near_boundary": false,
+      "capitalized": false,
+      "context": ") में रविवार को इंडियन ऑयल ( IOC )"
+    },
+    {
+      "word": "ऑयल",
+      "gold": "HI",
+      "pred": "EN",
+      "conf": 0.712,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "में रविवार को इंडियन ऑयल ( IOC ) के"
+    },
+    {
+      "word": "370",
+      "gold": "EN",
+      "pred": "OTH",
+      "conf": 1.0,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "अनुच्छेद 370 ( Article 370 ) हटने के बाद"
+    },
+    {
+      "word": "स्टेट",
+      "gold": "HI",
+      "pred": "EN",
+      "conf": 0.747,
+      "near_boundary": false,
+      "capitalized": false,
+      "context": "Platinum Deposits : भारतीय स्टेट बैंक ( SBI )"
+    },
+    {
+      "word": "बैंक",
+      "gold": "HI",
+      "pred": "EN",
+      "conf": 0.589,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "Deposits : भारतीय स्टेट बैंक ( SBI ) आजादी"
+    },
+    {
+      "word": "टर्म",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 1.0,
+      "near_boundary": false,
+      "capitalized": false,
+      "context": "75वीं वर्षगांठ पर प्लेटिनम टर्म डिपॉजिट्स लेकर आया था"
+    },
+    {
+      "word": "आईकू",
+      "gold": "HI",
+      "pred": "EN",
+      "conf": 0.644,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "चीनी कंपनी आईकू ( iQOO ) ने"
+    },
+    {
+      "word": "Chanu",
+      "gold": "OTH",
+      "pred": "EN",
+      "conf": 0.96,
+      "near_boundary": true,
+      "capitalized": true,
+      "context": "मीराबाई चानू ( Mirabai Chanu ) ने पूरे देश"
+    },
+    {
+      "word": "ने",
+      "gold": "OTH",
+      "pred": "HI",
+      "conf": 0.985,
+      "near_boundary": false,
+      "capitalized": false,
+      "context": "( Mirabai Chanu ) ने पूरे देश को गौरवान्वित"
+    },
+    {
+      "word": "स्किन",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.643,
+      "near_boundary": false,
+      "capitalized": false,
+      "context": "स्किन फ्रेंडली ये Women's Thermal"
+    },
+    {
+      "word": "XUV700",
+      "gold": "OTH",
+      "pred": "EN",
+      "conf": 0.747,
+      "near_boundary": false,
+      "capitalized": true,
+      "context": "महिंद्रा की XUV700 को ग्लोबल NCAP क्रैश"
+    },
+    {
+      "word": "5-स्टार",
+      "gold": "OTH",
+      "pred": "EN",
+      "conf": 0.701,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "NCAP क्रैश टेस्ट में 5-स्टार सेफ्टी रेटिंग मिली है"
+    },
+    {
+      "word": "pra",
+      "gold": "OTH",
+      "pred": "HI",
+      "conf": 0.854,
+      "near_boundary": false,
+      "capitalized": false,
+      "context": "about it . Or pra - Force ko Sena"
+    },
+    {
+      "word": "suvidha",
+      "gold": "HI",
+      "pred": "EN",
+      "conf": 0.534,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "ko Sena Ke equal suvidha Kyo nhi Hai ."
+    },
+    {
+      "word": "बीपीएससी",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.653,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "लोक सेवा आयोग ने बीपीएससी 67वीं प्रारंभिक परीक्षा 2021"
+    },
+    {
+      "word": "वैकेंसियों",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.852,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "परीक्षा 2021 के लिए वैकेंसियों को फिर से संशोधित"
+    },
+    {
+      "word": "डेमेट्रिएडस",
+      "gold": "HI",
+      "pred": "EN",
+      "conf": 0.55,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "Rampal ) और गैब्रिएला डेमेट्रिएडस ( Gabriella Demetriades )"
+    },
+    {
+      "word": "वीडियो",
+      "gold": "HI",
+      "pred": "EN",
+      "conf": 0.613,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "होली की तस्वीरें और वीडियो सोशल मीडिया पर वायरल"
+    },
+    {
+      "word": "Sr",
+      "gold": "OTH",
+      "pred": "EN",
+      "conf": 0.857,
+      "near_boundary": false,
+      "capitalized": true,
+      "context": "@ sureshpprabhu Sr . my friend halp"
+    },
+    {
+      "word": "halp",
+      "gold": "OTH",
+      "pred": "EN",
+      "conf": 0.663,
+      "near_boundary": false,
+      "capitalized": false,
+      "context": "Sr . my friend halp plz . Use doodh"
+    },
+    {
+      "word": "Use",
+      "gold": "HI",
+      "pred": "EN",
+      "conf": 0.981,
+      "near_boundary": false,
+      "capitalized": true,
+      "context": "friend halp plz . Use doodh ki bahut jarurat"
+    },
+    {
+      "word": "सिटी",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.536,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "यह ट्रेन बंगलौर सिटी जंक्शन रेलवे स्टेशन ("
+    },
+    {
+      "word": "Greensका",
+      "gold": "OTH",
+      "pred": "EN",
+      "conf": 0.811,
+      "near_boundary": true,
+      "capitalized": true,
+      "context": "बजट में जिस Operation Greensका ऐलान किया है ,"
+    },
+    {
+      "word": "चेन",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.917,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "वो भी नई सप्लाई चेन व्यवस्था से जुड़ा है"
+    },
+    {
+      "word": "रेलवे",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.969,
+      "near_boundary": false,
+      "capitalized": false,
+      "context": "रेलवे रिक्रूटमेंट बोर्ड ( RRB"
+    },
+    {
+      "word": "बोर्ड",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.884,
+      "near_boundary": false,
+      "capitalized": false,
+      "context": "रेलवे रिक्रूटमेंट बोर्ड ( RRB ) सोमवार"
+    },
+    {
+      "word": "डीजीपी",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.617,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "वहीं डीजीपी विवेक जौहरी ( DGP"
+    },
+    {
+      "word": "टीबी",
+      "gold": "EN",
+      "pred": "HI",
+      "conf": 0.749,
+      "near_boundary": true,
+      "capitalized": false,
+      "context": "टीबी की रोकथाम में भी"
+    },
+    {
+      "word": "ittey",
+      "gold": "HI",
+      "pred": "EN",
+      "conf": 0.492,
+      "near_boundary": false,
+      "capitalized": false,
+      "context": "ittey dino baad gag aya"
+    },
+    {
+      "word": "hey",
+      "gold": "HI",
+      "pred": "EN",
+      "conf": 0.591,
+      "near_boundary": false,
+      "capitalized": false,
+      "context": "dino baad gag aya hey , pehle like karke"
+    }
+  ]
+}
