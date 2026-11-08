@@ -1,0 +1,287 @@
+<!doctype html>
+<!--
+  Deal (taste-skill 2.5.1, software): palette forest-pale-lime (a dark green ground with a lime accent:
+  a quiet, low-glare room for reading long transcripts, the lime kept for the one action and for state),
+  type mona (Mona Sans + Geist Mono, with Noto Sans Devanagari for Hindi script), radius sharp,
+  buttons arrow, mark ring. App UI: no dealt moment, effect or scene; the hero enters once on load.
+-->
+<html lang="en" data-type="software" data-radius="sharp" data-buttons="arrow" data-motion>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>IndicSwitch: Hinglish speech to text that keeps both languages</title>
+  <meta name="description" content="Transcribe Hindi-English audio in the browser, see every word's language, and get careful fixes that never translate what was said.">
+  <meta name="page-type" content="software">
+  <meta name="site-kind" content="software">
+  <meta name="theme-color" content="#0f1f10">
+  <meta property="og:title" content="IndicSwitch">
+  <meta property="og:description" content="Hinglish speech to text with word-level language tags and careful, logged fixes.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <script src="assets/head.js"></script>
+  <link rel="stylesheet" href="assets/fonts.css">
+  <link rel="stylesheet" href="assets/kit/system.css">
+  <link rel="stylesheet" href="assets/kit/motion.css">
+  <link rel="stylesheet" href="assets/tokens.css">
+  <link rel="stylesheet" href="assets/app.css">
+  <script type="module" src="assets/kit/motion.js"></script>
+  <script type="module" src="assets/app.js"></script>
+</head>
+<body>
+  <header class="nav app-nav">
+    <div class="wrap nav__bar">
+      <a class="skip-link" href="#top">Skip to content</a>
+      <a class="nav__logo" href="#top" aria-label="IndicSwitch home">
+        <span class="mark" data-mark="ring" aria-hidden="true"></span>
+        <span class="app-wordmark" translate="no">IndicSwitch</span>
+      </a>
+      <nav class="app-nav__links" aria-label="Main">
+        <a class="nav__link" href="#workspace">Workspace</a>
+        <a class="nav__link" href="#method">Method</a>
+        <a class="nav__link" href="#limits">Limits</a>
+        <a class="nav__link" href="https://github.com/arkalatua/Indic_Switch" rel="noopener">Source</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero app-hero" data-enter aria-labelledby="hero-title">
+      <div class="wrap app-hero__inner">
+        <h1 id="hero-title">Hinglish speech to text that keeps both languages.</h1>
+        <p class="t-lead app-hero__lead measure">Record or upload a clip. Whisper writes it down, every word gets a Hindi or English tag, and careful fixes clean up the output without translating anything you said.</p>
+        <p class="t-small muted app-hero__fact">Language tags score 0.969 macro-F1 on 5,000 held-out sentences.</p>
+      </div>
+    </section>
+
+    <section class="app-section app-workspace" id="workspace" aria-labelledby="workspace-title">
+      <div class="wrap">
+        <h2 id="workspace-title" class="sr-only">Workspace</h2>
+        <div class="ws">
+          <!-- input -->
+          <div class="ws__input">
+            <div class="tabs app-tabs" role="tablist" aria-label="Input">
+              <button class="tab" role="tab" id="tab-upload" aria-controls="panel-upload" aria-selected="true">Upload</button>
+              <button class="tab" role="tab" id="tab-record" aria-controls="panel-record" aria-selected="false" tabindex="-1">Record</button>
+              <button class="tab" role="tab" id="tab-text" aria-controls="panel-text" aria-selected="false" tabindex="-1">Paste text</button>
+            </div>
+
+            <form id="run-form" class="ws__form" novalidate>
+              <div class="ws__panel" role="tabpanel" id="panel-upload" aria-labelledby="tab-upload">
+                <label class="drop" id="drop">
+                  <input type="file" id="file" name="audio" accept="audio/*,.wav,.mp3,.m4a,.ogg,.flac,.webm" class="sr-only">
+                  <span class="drop__title">Drop an audio file here</span>
+                  <span class="drop__hint muted">or <span class="drop__choose">choose one</span>. WAV, MP3, M4A, OGG or FLAC, up to 10 minutes.</span>
+                </label>
+                <div class="clip" id="clip" hidden>
+                  <div class="clip__meta">
+                    <span class="clip__name" id="clip-name"></span>
+                    <span class="clip__dur muted mono" id="clip-dur"></span>
+                  </div>
+                  <audio id="clip-audio" controls preload="metadata"></audio>
+                  <button type="button" class="btn btn--secondary btn--sm clip__clear" id="clip-clear">Choose another file</button>
+                </div>
+              </div>
+
+              <div class="ws__panel" role="tabpanel" id="panel-record" aria-labelledby="tab-record" hidden>
+                <div class="rec">
+                  <button type="button" class="rec__btn" id="rec-btn" aria-pressed="false">
+                    <span class="rec__dot" aria-hidden="true"></span>
+                    <span class="rec__label" id="rec-label">Start recording</span>
+                  </button>
+                  <div class="rec__meter" aria-hidden="true"><span id="rec-level"></span></div>
+                  <span class="rec__time mono" id="rec-time" aria-live="off">0:00</span>
+                </div>
+                <p class="t-small muted rec__note" id="rec-note">Your browser asks for the microphone first. The recording stays on this page until you transcribe it.</p>
+              </div>
+
+              <div class="ws__panel" role="tabpanel" id="panel-text" aria-labelledby="tab-text" hidden>
+                <div class="field">
+                  <label for="text">Transcript to tag</label>
+                  <textarea id="text" name="text" rows="6" maxlength="5000" spellcheck="false" aria-describedby="text-hint text-error"></textarea>
+                  <span class="t-small muted" id="text-hint">Paste any Hinglish text, in Roman or Devanagari script. Up to 5,000 characters.</span>
+                  <span class="field__error" id="text-error" hidden></span>
+                </div>
+                <button type="button" class="btn btn--secondary btn--sm" id="use-example">Use an example sentence</button>
+              </div>
+
+              <div class="ws__actions">
+                <button type="submit" class="btn btn--primary" id="run">Transcribe audio</button>
+                <p class="form__status t-small" id="status" role="status" aria-live="polite"></p>
+              </div>
+
+              <details class="settings" id="settings">
+                <summary class="settings__summary">Settings</summary>
+                <div class="settings__body">
+                  <fieldset class="settings__group" data-audio-only>
+                    <legend>Speech recognition</legend>
+                    <div class="field">
+                      <label for="model">Whisper model</label>
+                      <select id="model" name="model">
+                        <option value="small" selected>Small: most accurate</option>
+                        <option value="base">Base: about 3× faster, much less accurate</option>
+                        <option value="tiny">Tiny: fastest, for quick checks</option>
+                      </select>
+                    </div>
+                    <div class="field">
+                      <label for="language">Spoken language</label>
+                      <select id="language" name="language">
+                        <option value="hindi">Hindi with English</option>
+                        <option value="auto">Detect automatically</option>
+                        <option value="english">English with Hindi</option>
+                      </select>
+                    </div>
+                    <label class="check"><input type="checkbox" id="block-urdu" name="block_urdu" checked> <span>Keep Hindi in Devanagari (block Urdu script)</span></label>
+                  </fieldset>
+                  <fieldset class="settings__group">
+                    <legend>Language tags and fixes</legend>
+                    <div class="field">
+                      <label for="lid">Language tagger</label>
+                      <select id="lid" name="lid"></select>
+                    </div>
+                    <div class="field">
+                      <label for="script">Write the result in</label>
+                      <select id="script" name="target_script">
+                        <option value="keep">The script Whisper used</option>
+                        <option value="mixed">Hindi in Devanagari, English in Latin</option>
+                        <option value="roman">Roman letters only</option>
+                        <option value="native">Devanagari where tagged Hindi</option>
+                      </select>
+                    </div>
+                    <div class="field">
+                      <label for="conf">Fix a word only above <output id="conf-out" for="conf" class="mono">0.80</output> confidence</label>
+                      <input type="range" id="conf" name="min_confidence" min="0.5" max="0.99" step="0.01" value="0.80">
+                    </div>
+                    <label class="check"><input type="checkbox" id="canon" name="canonicalize" checked> <span>Standardise Hindi spellings (nhi to nahi)</span></label>
+                    <label class="check"><input type="checkbox" id="loops" name="collapse_loops" checked> <span>Remove repeated loops</span></label>
+                    <div class="field">
+                      <label for="protected">Words never to change</label>
+                      <input type="text" id="protected" name="protected_words" maxlength="300" autocomplete="off" aria-describedby="protected-hint">
+                      <span class="t-small muted" id="protected-hint">Names and terms, separated by commas.</span>
+                    </div>
+                  </fieldset>
+                </div>
+              </details>
+            </form>
+          </div>
+
+          <!-- result -->
+          <div class="ws__result" id="result" aria-busy="false">
+            <div class="empty" id="empty">
+              <h3 class="empty__title">Your transcript appears here</h3>
+              <ul class="empty__steps">
+                <li><i class="empty__mark empty__mark--fix" aria-hidden="true"></i> The corrected text, with every fix underlined.</li>
+                <li><i class="empty__mark empty__mark--tag" aria-hidden="true"></i> Each word marked Hindi, English or other.</li>
+                <li><i class="empty__mark" aria-hidden="true"></i> What Whisper first wrote, kept beside it.</li>
+              </ul>
+            </div>
+
+            <div class="live" id="live" hidden>
+              <div class="out__head">
+                <h3 class="out__title">Transcribing</h3>
+                <span class="live__time mono muted" id="live-time"></span>
+              </div>
+              <div class="live__bar" role="progressbar" aria-label="Transcription progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="live-bar"><span id="live-fill"></span></div>
+              <p class="out__text live__text" id="live-text" translate="no"></p>
+              <p class="t-small muted live__note">Whisper’s text as it arrives. Language tags and fixes follow when the clip is done.</p>
+            </div>
+
+            <div class="out" id="out" hidden>
+              <div class="out__head">
+                <h3 class="out__title">Transcript</h3>
+                <div class="out__tools">
+                  <button type="button" class="btn btn--secondary btn--sm" id="copy">Copy text</button>
+                  <button type="button" class="btn btn--secondary btn--sm" id="download">Download JSON</button>
+                </div>
+              </div>
+              <p class="out__text" id="out-text" lang="hi-Latn" translate="no"></p>
+
+              <div class="legend" id="legend" aria-label="Word languages"></div>
+              <div class="tokens" id="tokens" role="list" aria-label="Words with their language" translate="no"></div>
+              <p class="t-small muted tokens__more" id="tokens-more" hidden></p>
+
+              <dl class="stats out__stats" id="stats"></dl>
+
+              <div class="out__block">
+                <h4 class="out__sub" id="raw-title">What Whisper wrote</h4>
+                <p class="out__raw" id="out-raw" translate="no"></p>
+              </div>
+
+              <div class="out__block" id="edits-block">
+                <h4 class="out__sub">Fixes</h4>
+                <ul class="rows edits" id="edits"></ul>
+              </div>
+
+              <details class="score" id="score">
+                <summary class="settings__summary">Score against a reference</summary>
+                <div class="score__body">
+                  <div class="field">
+                    <label for="ref">Correct transcript</label>
+                    <textarea id="ref" name="reference" rows="3" maxlength="20000" aria-describedby="ref-error"></textarea>
+                    <span class="field__error" id="ref-error" hidden></span>
+                  </div>
+                  <button type="button" class="btn btn--secondary btn--sm" id="score-btn">Compare with the reference</button>
+                  <table class="score__table" id="score-table" hidden>
+                    <caption class="sr-only">Error rates, lower is better</caption>
+                    <thead><tr><th scope="col">Output</th><th scope="col">Word errors</th><th scope="col">Letter errors</th><th scope="col">Ignoring script</th></tr></thead>
+                    <tbody></tbody>
+                  </table>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="app-section app-method" id="method" aria-labelledby="method-title">
+      <div class="wrap">
+        <h2 id="method-title">Four steps. <span class="muted">The raw output is always kept.</span></h2>
+        <ol class="steps">
+          <li class="step">
+            <span class="step__num mono">01</span>
+            <h3 class="step__title">Audio, in your browser</h3>
+            <p>Any file or recording is converted on this page to 16 kHz mono before it is sent. Nothing is saved on the server.</p>
+          </li>
+          <li class="step">
+            <span class="step__num mono">02</span>
+            <h3 class="step__title">Whisper writes it down</h3>
+            <p>OpenAI’s Whisper transcribes the clip. Blocking Urdu script keeps Hindi words in Devanagari.</p>
+          </li>
+          <li class="step">
+            <span class="step__num mono">03</span>
+            <h3 class="step__title">Every word gets a language</h3>
+            <p>A tagger trained on 23,698 annotated Hinglish sentences labels each word Hindi, English or other, with a confidence.</p>
+          </li>
+          <li class="step">
+            <span class="step__num mono">04</span>
+            <h3 class="step__title">Careful fixes, all logged</h3>
+            <p>Only confident words change: Whisper’s repeated loops, Hindi spelling variants, English words written in Devanagari.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="app-section app-limits" id="limits" aria-labelledby="limits-title">
+      <div class="wrap limits">
+        <h2 id="limits-title">Limits worth knowing. <span class="muted">Measured, not guessed.</span></h2>
+        <ul class="rows limits__rows">
+          <li><span class="rows__name">Fixes cannot hear</span><p>The fixes clean what Whisper wrote. A word Whisper misheard stays misheard.</p></li>
+          <li><span class="rows__name">Base is weak on fast speech</span><p>On conversational clips Whisper Base often loops or drifts into Urdu script. Small does better and is slower.</p></li>
+          <li><span class="rows__name">Loops are the big win</span><p>Removing repeated loops took word error rate from 1.52 to 0.99 on 20 test clips, with no clip made worse.</p></li>
+          <li><span class="rows__name">Ambiguous words</span><p>“me” and “to” are both Hindi and English words, and cause most tagging mistakes.</p></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <div class="wrap app-footer__inner">
+      <a class="nav__logo" href="#top" aria-label="IndicSwitch home">
+        <span class="mark" data-mark="ring" aria-hidden="true"></span>
+        <span class="app-wordmark" translate="no">IndicSwitch</span>
+      </a>
+      <p class="t-small muted">Open source on <a class="app-link" href="https://github.com/arkalatua/Indic_Switch" rel="noopener">GitHub</a>. Fonts: Mona Sans, Geist Mono, Noto Sans Devanagari (SIL OFL). Interface kit: taste-skill (MIT). Evaluation audio: CoSHE-500 (CC-BY-NC-4.0).</p>
+    </div>
+  </footer>
+</body>
+</html>

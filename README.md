@@ -46,7 +46,7 @@ audio ─► load (mono, 16 kHz) ─► [Silero VAD] ─► Whisper Base ─► 
 
 ```bash
 pip install -r requirements.txt            # on Colab, torch is preinstalled
-python -m pytest -q                        # 40 unit tests, CPU only
+python -m pytest -q                        # 72 tests, CPU only
 
 # Day 2: language ID data (COMI-LINGUA, CC-BY-4.0)
 python scripts/prepare_comi_lingua.py
@@ -64,9 +64,37 @@ python scripts/run_asr.py --manifest data/manifests/coshe500.csv --split test
 python scripts/run_asr.py --manifest data/manifests/coshe500.csv --split test --language hindi --beams 3
 python scripts/run_experiments.py experiments/asr/*.jsonl --lid models/lid_model --lid models/ngram_lid.pkl --lid rule
 
-# Day 7: demo
-streamlit run app/streamlit_app.py
+# Day 7: the web app
+uvicorn server.app:app --host 127.0.0.1 --port 8000     # then open http://127.0.0.1:8000
 ```
+
+## Web app
+
+`server/app.py` (FastAPI) serves a JSON API and the frontend in `web/`, which is plain HTML, CSS and JS with no build step. You can upload or record audio, or paste text. The app shows:
+* the corrected transcript, with each fix underlined
+* every word tagged Hindi, English or other, dashed when the tagger was too unsure to fix it
+* what Whisper first wrote, with removed and changed words marked
+* the fix log with reasons, word and switch counts, the real-time factor, and scoring against a reference
+* a JSON download of the full result
+
+The browser converts any audio format to 16 kHz mono WAV before upload, so the server only parses WAV and needs no FFmpeg. Nothing is stored on the server.
+
+| Endpoint | Purpose |
+|---|---|
+| `GET /api/config` | Available language models (fixed ids) and limits |
+| `POST /api/text` | Tag and correct text: `{"text": "...", "lid": "ngram", "target_script": "keep", ...}` |
+| `POST /api/audio` | Multipart: `file` (WAV) plus `settings` (JSON: `model` base/small/tiny, `language`, `block_urdu`, correction settings) |
+| `POST /api/audio/stream` | Same input as `/api/audio`, answered as Server-Sent Events: `start`, one `segment` per decoded chunk, then `result` (what the page uses, so text appears while the rest is transcribed) |
+| `POST /api/score` | WER and CER of the raw and corrected text against a reference |
+
+Speech recognition uses **faster-whisper** (CTranslate2, int8 on CPU) with Whisper Small by default. It is loaded when the server starts, with no PyTorch import (644 MB resident). If faster-whisper is not installed, the server falls back to the Transformers pipeline.
+
+The design follows the taste-skill system, dealt rather than picked: palette forest-pale-lime, Mona Sans + Geist Mono type, sharp radius, arrow buttons. Its CSS and motion files are vendored unmodified in `web/assets/kit/` under their MIT licence. Fonts are self-hosted under the SIL OFL.
+
+Settings via environment variables:
+* `INDICSWITCH_HTTPS=1`: send HSTS when served over HTTPS.
+* `INDICSWITCH_TRUST_PROXY=1`: rate-limit by `X-Forwarded-For`, only behind your own proxy.
+* `INDICSWITCH_MAX_JOBS`: the number of concurrent heavy jobs (default 2).
 
 Python API:
 ```python
@@ -138,7 +166,22 @@ The most frequent errors are the genuinely ambiguous words `me` (English "me" vs
 Takeaways:
 1. Whisper Base is too weak on conversational Hinglish. Use Whisper Small for *inference* on the Colab T4; only fine-tuning Small is out of scope.
 2. Loop collapse is the correction rule with the most measurable effect. It made no utterance worse in these runs.
-3. Next to try: VAD segmentation into shorter chunks, which should reduce loops.
+
+**Faster engine (faster-whisper, CTranslate2 int8, 8-core CPU).** Same clips, same scoring. Settings: `hindi`, Urdu tokens blocked, Silero VAD, no conditioning on previous text, greedy decoding.
+
+| Clips | Model | Repetition penalty | RTF | Raw WER | Raw CER |
+|---|---|---|---|---|---|
+| 5 | Base | 1.0 | **0.155** (old engine: 1.2–1.4) | 0.995 | 0.948 |
+| 5 | Small | 1.0 | 0.516 | 0.975 | 0.840 |
+| 5 | Small | 1.1 | 0.881 | 0.826 | 0.692 |
+| 15 held-out | Small | 1.0 | 0.728 | 0.859 | 0.722 |
+| 15 held-out | **Small** | **1.1** | 0.771 | **0.728** | **0.563** |
+
+* The repetition penalty was chosen on clips 1–5, then checked on clips 6–20, which were not used for the choice. On those it cut WER by 15% and CER by 22% (relative), so it is the web app's default (`INDICSWITCH_REPETITION_PENALTY`).
+* Model load takes 3.4 s, against about 60 s for the Transformers pipeline. The web server holds Whisper Small in 644 MB with no PyTorch import.
+* With the loops gone, the text correction rules barely change WER or CER on this audio (held-out CER 0.563 raw vs 0.567 corrected). The decoding settings, not the correction rules, are where the accuracy came from.
+* **Chunked decoding** (the web app's default): the audio is cut at pauses into chunks of up to 15 s and decoded chunk by chunk, so text streams to the page sooner. On the 15 held-out clips the first text arrived after 6.4 s on average, against 9.4 s with whole 30 s windows, with WER 0.713 (vs 0.728) and CER 0.547 (vs 0.563) at the same speed. 10 s chunks were faster still but less accurate (WER 0.763). Silence produces no text at all.
+* These clips are still part of CoSHE-500's evaluation split, and the held-out clips informed two choices (penalty, chunk size), so treat these as development numbers until the full 500-clip run.
 
 | System | WER | CER | WER (script-agnostic) | LID macro-F1 | Boundary F1 | RTF | Hardware |
 |---|---|---|---|---|---|---|---|
@@ -155,7 +198,8 @@ Takeaways:
 notebooks/      Colab notebooks 01–05 (thin wrappers over src/ and scripts/)
 src/            preprocessing, asr, language_identification, correction, transliteration, evaluation, pipeline, data_sources
 scripts/        prepare_comi_lingua, train_ngram_lid, train_xlmr_lid, evaluate_lid, build_manifest, run_asr, run_experiments
-app/            streamlit_app.py
+server/         app.py: FastAPI backend for the web app
+web/            the web app frontend: index.html, assets/ (app.css, app.js, fonts, vendored kit)
 data/           lexicons/, manifests/, processed/ (see data/README.md)
 models/         lid_model/ (not in Git), ngram_lid.pkl (not in Git)
 experiments/    asr/, results.csv, ablations.json, lid_*.json

@@ -26,9 +26,9 @@ class IndicSwitch:
     @property
     def asr(self):
         if self._asr is None:  # lazy: text-only use never loads Whisper
-            from .asr import WhisperASR
+            from .asr import make_asr  # faster-whisper when installed, else Transformers
 
-            self._asr = WhisperASR(self._decode_config)
+            self._asr = make_asr(self._decode_config)
         return self._asr
 
     def process_text(self, raw_transcript: str, timings: dict | None = None) -> dict[str, Any]:
@@ -67,10 +67,13 @@ class IndicSwitch:
 
     def run_array(self, wav, sr: int) -> dict[str, Any]:
         """Full pipeline on an already-loaded mono waveform."""
-        timings: dict = {}
         t0 = time.perf_counter()
-        asr_res = self.asr.transcribe_array(wav, sr)
-        timings["asr_s"] = asr_res.elapsed_seconds
+        return self.finish(self.asr.transcribe_array(wav, sr), t0)
+
+    def finish(self, asr_res, t0: float) -> dict[str, Any]:
+        """Tag and correct a finished ASR result; ``t0`` is when the audio work started.
+        Shared by the one-shot and the streaming paths."""
+        timings: dict = {"asr_s": asr_res.elapsed_seconds}
         out = self.process_text(asr_res.text, timings)
         timings["total_s"] = time.perf_counter() - t0
         out.update({

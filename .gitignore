@@ -5,13 +5,12 @@ __pycache__/
 .ruff_cache/
 .ipynb_checkpoints/
 
-# Secrets: never commit credentials (HF tokens, API keys, Streamlit secrets)
+# Secrets: never commit credentials (HF tokens, API keys)
 .env
 .env.*
 *.key
 *.pem
 *.p12
-.streamlit/secrets.toml
 .huggingface/
 hf_token*
 
@@ -31,3 +30,5 @@ experiments/asr*/*.jsonl
 *.safetensors
 *.bin
 experiments/ablations.json
+.taste-skill/
+shots/

@@ -13,7 +13,11 @@ rapidfuzz>=3.14.6
 datasets>=5.1.0
 huggingface-hub>=2.4.0
 
-# Speech + transformer models. torch>=2.6 fixes CVE-2025-32434 (torch.load RCE).
+# Speech recognition engine used by the web app: CTranslate2 int8, no PyTorch needed at inference.
+faster-whisper>=1.2.1
+
+# Speech + transformer models (training, experiments, the Transformers ASR fallback).
+# torch>=2.6 fixes CVE-2025-32434 (torch.load RCE).
 # On Colab keep the preinstalled CUDA build; locally install the right CUDA/CPU build first.
 torch>=2.6
 torchaudio>=2.6
@@ -24,12 +28,17 @@ soundfile>=0.14.0
 silero-vad>=6.2.3
 psutil>=7.2.2
 
-# Demo
-streamlit>=1.67.0
+# Web app (FastAPI backend serving web/)
+fastapi>=0.162.2
+uvicorn[standard]>=0.54.0
+python-multipart>=0.0.33
+
+# Notebooks (plots)
 matplotlib>=3.8
 
 # Dev / security checks (see SECURITY.md)
 pytest>=9.2.0
+httpx>=0.28.1
 ruff>=0.15
 pip-audit>=2.9
 
